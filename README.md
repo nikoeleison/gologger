@@ -53,3 +53,15 @@ func main() {
 2006-01-02 15:04:05.000 [PANIC] main.go:29                     - Hello World!
 ```
 
+## Benchmark
+* Date: 17 August 2019
+* Memory: 3,6 GiB
+* Processor: Intel® Core™ i3-6006U CPU @ 2.00GHz × 4
+
+### Go benchmark
+`$ go test -bench=. -benchtime=5s`
+
+| test | times ran | ns/op | B/op | allocs/op |
+|------|-----------|-------|------|-----------|
+| **BenchmarkGologger** | 10000 | 765113 | 8306 | 143 |
+
