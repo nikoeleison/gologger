@@ -65,3 +65,62 @@ func main() {
 |------|-----------|-------|------|-----------|
 | **BenchmarkGologger** | 10000 | 765113 | 8306 | 143 |
 
+### Apache benchmark
+`$ ab -n 1000 -c 1000 localhost:3000/index`
+
+```
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:       localhost
+Server Port:           3000
+
+Document Path:         /index
+Document Length:       8 bytes
+
+Concurrency Level:     1000
+Time taken for tests:  0.175 seconds
+Complete requests:     1000
+Failed requests:       991
+   (Connect: 0, Receive: 0, Length: 991, Exceptions: 0)
+Total transferred:     126794 bytes
+HTML transferred:      9893 bytes
+Requests per second:   5715.07 [#/sec] (mean)
+Time per request:      174.976 [ms] (mean)
+Time per request:      0.175 [ms] (mean, across all concurrent requests)
+Transfer rate:         707.65 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    5   9.6      1      26
+Processing:     1   18   7.2     17      47
+Waiting:        1   18   7.3     16      47
+Total:          1   23  11.9     20      72
+
+Percentage of the requests served within a certain time (ms)
+  50%     20
+  66%     21
+  75%     30
+  80%     33
+  90%     41
+  95%     43
+  98%     59
+  99%     61
+ 100%     72 (longest request)
+```
