@@ -1,9 +1,9 @@
-//nikoeleison
+// @author nikoeleison
 package gologger
 
 import "testing"
 
-//>>>public
+// @public
 
 func BenchmarkGologger(b *testing.B) {
 	logger := New(
@@ -20,7 +20,7 @@ func BenchmarkGologger(b *testing.B) {
 	}
 }
 
-//>>>private
+// @private
 
 func sample(logger *Driver, i int) {
 	logger.Info("print ", i)

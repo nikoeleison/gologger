@@ -1,4 +1,4 @@
-//nikoeleison
+// @author nikoeleison
 package gologger
 
 import (
@@ -11,11 +11,11 @@ import (
 	"time"
 )
 
-//>>>public
+// @public
 
-//driver struct
-//pool section
-//writer section
+// driver struct
+// pool section
+// writer section
 type Driver struct {
 	pool chan *message
 	kill chan bool
@@ -30,9 +30,9 @@ type Driver struct {
 	writer   io.Writer
 }
 
-//driver constructor
-//dispatch pool
-//rotate writer file
+// driver constructor
+// dispatch pool
+// rotate writer file
 func New(path string, prefix string) (d *Driver) {
 	d = &Driver{}
 	d.pool = make(chan *message, 100)
@@ -48,8 +48,8 @@ func New(path string, prefix string) (d *Driver) {
 	return
 }
 
-//kill pool
-//consume the rest of message pool
+// kill pool
+// consume the rest of message pool
 func (d *Driver) Kill() {
 	d.sm.Lock()
 	defer d.sm.Unlock()
@@ -64,14 +64,14 @@ func (d *Driver) Kill() {
 	d.swg.Wait()
 }
 
-//>>>private
+// @private
 
 var (
 	suffixformat = "2006-01-02"
 )
 
-//produce new message
-//deliver message to consumer
+// produce new message
+// deliver message to consumer
 func (d *Driver) produce(level string, s string) {
 	d.sm.Lock()
 	defer d.sm.Unlock()
@@ -91,9 +91,9 @@ func (d *Driver) produce(level string, s string) {
 	}()
 }
 
-//consume message
-//rotate writer file
-//release message deliver
+// consume message
+// rotate writer file
+// release message deliver
 func (d *Driver) consume(msg *message) {
 	d.rotate(
 		msg.now.Format(suffixformat),
@@ -102,10 +102,10 @@ func (d *Driver) consume(msg *message) {
 	d.swg.Done()
 }
 
-//rotate writer file
-//skip rotate if driver suffix equal to now suffix
-//mkdir if not exist
-//touch if not exist
+// rotate writer file
+// skip rotate if driver suffix equal to now suffix
+// mkdir if not exist
+// touch if not exist
 func (d *Driver) rotate(suffix string) (err error) {
 	if d.suffix == suffix {
 		return nil
@@ -142,9 +142,9 @@ func (d *Driver) rotate(suffix string) (err error) {
 	return nil
 }
 
-//pool dispatcher
-//consume message
-//break infinite loop
+// pool dispatcher
+// consume message
+// break infinite loop
 func (d *Driver) dispatch() {
 	go func() {
 		for {

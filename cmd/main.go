@@ -1,4 +1,4 @@
-//nikoeleison
+// @author nikoeleison
 package main
 
 import (
@@ -12,19 +12,19 @@ import (
 	"github.com/nikoeleison/gologger"
 )
 
-//>>>public
+// @public
 
-//>>>private
+// @private
 
 var (
 	sm = &sync.Mutex{}
 	i  = 0
 )
 
-//setup logger
-//setup handler
-//setup server
-//setup graceful shutdown
+// setup logger
+// setup handler
+// setup server
+// setup graceful shutdown
 func main() {
 	logger := gologger.New(
 		"./log",

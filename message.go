@@ -1,4 +1,4 @@
-//nikoeleison
+// @author nikoeleison
 package gologger
 
 import (
@@ -6,11 +6,11 @@ import (
 	"time"
 )
 
-//>>>public
+// @public
 
-//>>>private
+// @private
 
-//message struct
+// message struct
 type message struct {
 	now   time.Time
 	level string
@@ -19,7 +19,7 @@ type message struct {
 	s     string
 }
 
-//message constructor
+// message constructor
 func newMsg(now time.Time, level string, file string, line int, s string) (msg *message) {
 	if line == 0 {
 		file = "???"
@@ -42,7 +42,7 @@ func newMsg(now time.Time, level string, file string, line int, s string) (msg *
 	return msg
 }
 
-//decorate message
+// decorate message
 func (msg *message) decorate() string {
 	return fmt.Sprintf(
 		"%s [%5s] %-30s - %s\n",
